@@ -43,6 +43,7 @@ namespace at.jku.ssw.cc
                 }
             }
             Program1.form1.richTextBox2.Text = pilaString;
+            
             if (Parser.muestraCargaDeInstrs) Parser.MessageBoxCon2PregMaqVirtual();
         }
 
@@ -208,6 +209,8 @@ namespace at.jku.ssw.cc
             laToken = Scanner.Next();
             //La 1° vez q se ejecuta, token queda con Token(1, 1), laToken con "class" (primer token del programa)
             la = laToken.kind;
+            String Tokeninfo = String.Format("Token {0} - ID {1}", Token.names[laToken.kind], laToken.kind);
+            Program1.form1.treeView2.Nodes.Add(Tokeninfo);
         }
 
         /* Verifies symbol and reads ahead. */
