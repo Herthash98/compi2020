@@ -764,6 +764,7 @@ namespace at.jku.ssw.cc
                 MessageBoxCon3Preg();
                 //Comienza Block
                 Block(methodDecl);  //Bloque dentro de MethodDecl() 
+                
                 curMethod.nArgs = Tab.topScope.nArgs;
                 curMethod.nLocs = Tab.topScope.nLocs;
                 curMethod.locals = Tab.topScope.locals;
@@ -1327,19 +1328,19 @@ namespace at.jku.ssw.cc
             MessageBoxCon3Preg();
             methodDecl.Nodes.Add(block);
             methodDecl.ExpandAll();
-            MessageBoxCon3Preg();
+            MessageBoxCon3Preg(block);
             ////// Agrega '{' al arbol
             Check(Token.LBRACE);
             block.Nodes.Add("'{'");
             block.ExpandAll();
-            MessageBoxCon3Preg();
+            MessageBoxCon3Preg(methodDecl);
             Code.Colorear("token");
             /////// Agrega 'StatementsOpc' al arbol
             System.Windows.Forms.TreeNode statementsopc = new System.Windows.Forms.TreeNode("StatementsOpc");
             MessageBoxCon3Preg();
             block.Nodes.Add(statementsopc);
             block.ExpandAll();
-            MessageBoxCon3Preg();
+            MessageBoxCon3Preg(block);
             Code.seleccLaProdEnLaGram(17);
             /////// Agrega '.' al arbol si el block esta vacio
             if (la == Token.RBRACE)
@@ -1347,7 +1348,7 @@ namespace at.jku.ssw.cc
                 Code.Colorear("latoken");
                 statementsopc.Nodes.Add(".");
                 statementsopc.ExpandAll();
-                MessageBoxCon3Preg();
+                MessageBoxCon3Preg(statementsopc);
             }
             int ii = 1;
             while (la != Token.RBRACE)
